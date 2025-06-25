@@ -31,7 +31,7 @@ async function saveNote(id, content) {
   });
 }
 
-if (!location.pathname.endsWith(id)) {
+if (!location.pathname.replace(/\/+$/, '').endsWith(id)) {
   history.replaceState(null, '', location.pathname.replace(/\/+$/, '') + '/' + id);
 }
 
