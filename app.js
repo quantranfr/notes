@@ -2,7 +2,7 @@ const SUPABASE_URL = 'https://mthmrtgksktvriyqlizt.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im10aG1ydGdrc2t0dnJpeXFsaXp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4NjY5NDQsImV4cCI6MjA2NjQ0Mjk0NH0.Pyq82ew0NhEnO2KcZeob0bpP9BYeZdEBTGPCoIjCH50';
 const TABLE = 'notes';
 
-const id = location.pathname.split('/').pop() || generateId();
+const id = location.pathname.replace(/\/+$/, '').split('/').pop() || generateId();
 const textarea = document.getElementById('note');
 
 function generateId(length = 6) {
@@ -32,7 +32,7 @@ async function saveNote(id, content) {
 }
 
 if (!location.pathname.endsWith(id)) {
-  history.replaceState(null, '', location.pathname + '/' + id);
+  history.replaceState(null, '', location.pathname.replace(/\/+$/, '') + '/' + id);
 }
 
 fetchNote(id).then(note => {
