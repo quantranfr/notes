@@ -41,7 +41,7 @@ fetchNote(id).then(note => {
   }
 });
 
-let timeout;
+var timeout;
 textarea.addEventListener('input', () => {
   clearTimeout(timeout);
   timeout = setTimeout(() => {
