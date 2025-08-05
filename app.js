@@ -3,6 +3,8 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 const TABLE = 'notes';
 
 const id = location.pathname.split('/').pop() || generateId();
+document.getElementById('page-title').textContent = `Quick Note: ${id}`;
+
 const textarea = document.getElementById('note');
 
 function generateId(length = 6) {
@@ -47,4 +49,55 @@ textarea.addEventListener('input', () => {
   timeout = setTimeout(() => {
     saveNote(id, textarea.value);
   }, 500);
+});
+
+// Toolbar elements
+const toggleLockBtn = document.getElementById('toggle-lock');
+const copyBtn = document.getElementById('copy-all');
+const pasteBtn = document.getElementById('paste-replace');
+const reloadBtn = document.getElementById('reload');
+
+let isUnlocked = false;
+
+function setButtonsState(enabled) {
+  [pasteBtn, reloadBtn].forEach(btn => {
+    btn.disabled = !enabled;
+    btn.classList.toggle('bg-blue-600', enabled);
+    btn.classList.toggle('bg-gray-400', !enabled);
+    btn.classList.toggle('hover:bg-blue-700', enabled);
+    btn.classList.toggle('cursor-not-allowed', !enabled);
+  });
+  textarea.readOnly = !enabled;
+}
+
+// Lock the textarea on initial load
+setButtonsState(false);
+
+toggleLockBtn.addEventListener('click', () => {
+  isUnlocked = !isUnlocked;
+  toggleLockBtn.textContent = isUnlocked ? 'Lock' : 'Unlock';
+  setButtonsState(isUnlocked);
+});
+
+// Copy All
+copyBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText(textarea.value).then(() => {
+    copyBtn.textContent = 'Copied!';
+    setTimeout(() => (copyBtn.textContent = 'Copy All'), 1000);
+  });
+});
+
+// Paste & Replace
+pasteBtn.addEventListener('click', async () => {
+  const text = await navigator.clipboard.readText();
+  textarea.value = text;
+  saveNote(id, text); // Save immediately after replace
+});
+
+// Reload from DB
+reloadBtn.addEventListener('click', async () => {
+  const note = await fetchNote(id);
+  if (note?.content !== undefined) {
+    textarea.value = note.content;
+  }
 });
