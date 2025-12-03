@@ -104,3 +104,23 @@ reloadBtn.addEventListener('click', async () => {
     textarea.value = note.content;
   }
 });
+
+const downloadBtn = document.getElementById('download-note');
+
+downloadBtn.addEventListener('click', () => {
+  // Get the text
+  const text = textarea.value;
+  let fileName = id;
+  // Optional: add .txt extension
+  if (!fileName.endsWith('.txt')) fileName += '.txt';
+
+  // Create a blob and a temporary link
+  const blob = new Blob([text], {type: 'text/plain'});
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(link.href);
+});
