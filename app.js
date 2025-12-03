@@ -76,19 +76,30 @@ function setButtonsState(enabled) {
 // Lock the textarea on initial load
 setButtonsState(false);
 
+/*
 toggleLockBtn.addEventListener('click', () => {
   isUnlocked = !isUnlocked;
   toggleLockBtn.textContent = isUnlocked ? 'Lock' : 'Unlock';
   setButtonsState(isUnlocked);
 });
+*/
+
+toggleLockBtn.innerHTML = isUnlocked
+  ? '<i class="fa-solid fa-lock-open"></i>'
+  : '<i class="fa-solid fa-lock"></i>';
 
 // Copy All
+/*
 copyBtn.addEventListener('click', () => {
   navigator.clipboard.writeText(textarea.value).then(() => {
     copyBtn.textContent = 'Copied!';
     setTimeout(() => (copyBtn.textContent = 'Copy All'), 1000);
   });
 });
+*/
+
+copyBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
+setTimeout(() => (copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i>'), 1000);
 
 // Paste & Replace
 pasteBtn.addEventListener('click', async () => {
