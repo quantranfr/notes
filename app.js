@@ -124,3 +124,39 @@ downloadBtn.addEventListener('click', () => {
   document.body.removeChild(link);
   URL.revokeObjectURL(link.href);
 });
+
+const downloadImgBtn = document.getElementById('download-img');
+
+downloadImgBtn.addEventListener('click', () => {
+  let base64 = textarea.value.trim();
+  let imgDataUrl = base64;
+
+  // If no data URL prefix, assume PNG
+  if (!base64.startsWith('data:image/')) {
+    imgDataUrl = `data:image/png;base64,${base64}`;
+  }
+
+  // Generate filename from #page-title
+  let fileName = document.getElementById('page-title').textContent.replace(/^Quick Note:\s*/, '').trim();
+  if (!fileName.endsWith('.png')) fileName += '.png';
+
+  // Create a link and trigger the download
+  const link = document.createElement('a');
+  link.href = imgDataUrl;
+  link.download = fileName;
+
+  // For large images, better to use Blob (optional):
+  // fetch(imgDataUrl)
+  //   .then(res => res.blob())
+  //   .then(blob => {
+  //     link.href = URL.createObjectURL(blob);
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     document.body.removeChild(link);
+  //     URL.revokeObjectURL(link.href);
+  //   });
+
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+});
