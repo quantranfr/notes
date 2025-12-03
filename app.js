@@ -136,8 +136,8 @@ downloadImgBtn.addEventListener('click', () => {
     imgDataUrl = `data:image/png;base64,${base64}`;
   }
 
-  // Generate filename from #page-title
-  let fileName = document.getElementById('page-title').textContent.replace(/^Quick Note:\s*/, '').trim();
+  // Generate filename
+  let fileName = id;
   if (!fileName.endsWith('.png')) fileName += '.png';
 
   // Create a link and trigger the download
