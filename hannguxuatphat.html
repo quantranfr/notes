@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>汉语出发 — 14 ngày đến Quảng Châu</title>
+<style>
+:root{--green:#173f35;--green2:#2f7057;--gold:#e4c77e;--paper:#f7f5ef;--ink:#20352e;--muted:#68766e;--line:#e0e2d8;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:var(--green);color:white;padding:28px max(20px,calc((100% - 1080px)/2)) 26px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.4px;font-size:20px}.pill{border:1px solid #ffffff55;border-radius:999px;padding:6px 12px;font-size:12px;color:#f3e5b9}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.12;margin:28px 0 10px}header p{color:#d7e3da;margin:0;max-width:650px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}.stat{background:#ffffff12;border:1px solid #ffffff1c;border-radius:14px;padding:14px}.stat strong{display:block;font-size:25px;color:var(--gold)}.stat span{font-size:12px;color:#d7e3da}
+main{max-width:1080px;margin:24px auto;padding:0 18px 50px}.progressbox,.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:18px}.progressrow{display:flex;justify-content:space-between;gap:10px;align-items:center}.track{height:9px;background:#e7e8df;border-radius:9px;overflow:hidden;margin-top:12px}.bar{height:100%;width:0;background:var(--green2);transition:width .2s}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.tab,button,select{font:inherit;cursor:pointer}.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 16px;color:var(--ink)}.tab.active{background:var(--green);color:#fff;border-color:var(--green)}
+h2{font-size:22px;margin:0 0 6px}h3{font-size:17px;margin:0 0 8px}.sub{color:var(--muted);margin:0 0 16px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.days{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.day{display:flex;gap:12px;text-align:left;align-items:center;border:1px solid var(--line);background:#fff;border-radius:14px;padding:13px;width:100%;color:var(--ink)}.day.selected{border-color:var(--green2);box-shadow:0 0 0 1px var(--green2)}.num{width:40px;height:40px;flex:0 0 40px;border-radius:12px;background:#eceee5;display:grid;place-items:center;font-weight:800;color:var(--green)}.day.done .num{background:var(--green2);color:white}.day small{display:block;color:var(--muted);margin-top:2px}
+.btn{border:0;background:var(--green);color:white;border-radius:11px;padding:11px 16px;font-weight:650}.btn.secondary{background:white;color:var(--green);border:1px solid var(--line)}.btn.gold{background:var(--gold);color:#173f35}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.task{display:flex;gap:10px;align-items:flex-start;padding:9px 0}.task input{margin-top:5px;accent-color:var(--green2);width:17px;height:17px}
+.wordgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.word{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff;min-width:0}.han{font-size:28px;font-weight:750;line-height:1.3;color:var(--green)}.py{color:#367557;font-size:14px;margin:5px 0}.meaning{font-size:14px}.tag{display:inline-block;font-size:11px;border-radius:999px;background:#edf2e9;color:#37664e;padding:3px 8px;margin-bottom:8px}
+.searchrow{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.searchrow input,.searchrow select{min-width:0;border:1px solid var(--line);border-radius:10px;padding:10px;background:white}.searchrow input{flex:1}
+.flash{max-width:520px;margin:0 auto;border:1px solid var(--line);background:white;border-radius:20px;padding:28px;text-align:center;min-height:270px;display:flex;flex-direction:column;align-items:center;justify-content:center}.flash .han{font-size:48px}.flash .answer{margin-top:20px;color:var(--muted)}.quizopt{display:block;width:100%;text-align:left;border:1px solid var(--line);border-radius:12px;background:white;padding:12px;margin:8px 0;color:var(--ink)}.quizopt:hover{border-color:var(--green2)}.feedback{padding:10px;border-radius:10px;margin-top:10px}.good{background:#e7f4e8;color:#225b35}.bad{background:#fff0e6;color:#8b421b}
+.hidden{display:none!important}.foot{color:var(--muted);font-size:12px;text-align:center;padding:14px}.notice{background:#f8f1db;border-radius:12px;padding:12px 14px;font-size:13px;margin-bottom:14px}
+@media(max-width:700px){.grid,.days{grid-template-columns:1fr}.wordgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{gap:7px}.stat{padding:10px}.stat strong{font-size:21px}main{padding:0 12px 35px}.panel,.progressbox{padding:15px}}
+@media(max-width:390px){.wordgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="brand">汉语出发 <span style="font-weight:400;color:#d7e3da">/ Hán ngữ xuất phát</span></div><span class="pill">14 NGÀY · GUANGZHOU SPRINT</span></div>
+<h1>你好，广州！<br><span style="color:#e4c77e">Nhìn chữ — hiểu ý — tự tin nói.</span></h1>
+<p>Ôn tiếng Trung thực chiến trước chuyến đi: biển báo, tàu điện, ăn uống, mua sắm và những câu cứu nguy khi nghe chưa hiểu.</p>
+<div class="stats"><div class="stat"><strong id="statWords">100</strong><span>TỪ & CỤM TỪ THỰC DỤNG</span></div><div class="stat"><strong>14</strong><span>NGÀY CÓ NHIỆM VỤ</span></div><div class="stat"><strong id="statDone">0/14</strong><span>NGÀY ĐÃ HOÀN THÀNH</span></div></div></header>
+<main>
+<section class="progressbox"><div class="progressrow"><div><b>Hành trình của bạn</b><div class="sub" style="margin:3px 0 0">Tiến độ được lưu trên trình duyệt của máy này.</div></div><b id="percent">0%</b></div><div class="track"><div class="bar" id="bar"></div></div></section>
+<nav><button class="tab active" data-tab="roadmap">Lộ trình 14 ngày</button><button class="tab" data-tab="words">Từ vựng</button><button class="tab" data-tab="flash">Flashcard</button><button class="tab" data-tab="quiz">Kiểm tra nhanh</button></nav>
+<section id="roadmap" class="panel">
+<h2>Lộ trình học 14 ngày</h2><p class="sub">Mỗi ngày khoảng 30–45 phút. Chọn ngày để xem nhiệm vụ và đánh dấu khi xong.</p>
+<div id="days" class="days"></div><hr style="border:0;border-top:1px solid var(--line);margin:20px 0">
+<div id="dayDetail"></div>
+</section>
+<section id="words" class="panel hidden"><h2>Bộ từ vựng thực dụng</h2><p class="sub">100 từ và cụm từ theo tình huống du lịch. Có pinyin, nghĩa tiếng Việt và lọc theo chủ đề.</p>
+<div class="notice">Bộ từ dưới đây là nội dung biên soạn cho chuyến đi, không phải danh sách chính thức trích từ giáo trình Super Chinese hay HSK3.</div>
+<div class="searchrow"><input id="search" placeholder="Tìm chữ Hán, pinyin hoặc nghĩa tiếng Việt…"><select id="category"><option value="all">Tất cả chủ đề</option></select><label style="display:flex;align-items:center;gap:6px;font-size:13px"><input type="checkbox" id="hidePinyin"> Ẩn pinyin</label></div>
+<div id="wordCount" class="sub"></div><div id="wordGrid" class="wordgrid"></div></section>
+<section id="flash" class="panel hidden"><h2>Flashcard — nhớ chủ động</h2><p class="sub">Nhìn chữ Hán trước, tự nhớ nghĩa rồi mới lật thẻ.</p>
+<div class="searchrow"><select id="flashCat"><option value="all">Tất cả chủ đề</option></select><label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="flashPinyin" checked> Hiện pinyin khi lật</label></div>
+<div class="flash"><div class="tag" id="flashTag">BIỂN BÁO</div><div class="han" id="flashHan">出口</div><div class="py hidden" id="flashPy"></div><div class="answer hidden" id="flashMeaning"></div><button class="btn gold" id="flip" style="margin-top:20px">Lật thẻ xem nghĩa</button></div>
+<div class="actions" style="justify-content:center"><button class="btn secondary" id="prevCard">← Thẻ trước</button><span id="cardIndex" style="align-self:center;color:var(--muted)">1/100</span><button class="btn" id="nextCard">Thẻ tiếp →</button></div></section>
+<section id="quiz" class="panel hidden"><h2>Kiểm tra nhanh</h2><p class="sub">10 câu trắc nghiệm ngẫu nhiên từ bộ từ vựng. Hãy chọn nghĩa đúng của chữ Hán.</p><div id="quizArea"></div><div class="actions"><button class="btn" id="newQuiz">Làm bài 10 câu mới</button></div></section>
+<div class="foot">汉语出发 · Bản chạy offline · Dữ liệu tiến độ lưu cục bộ trong trình duyệt.</div>
+</main>
+<script>
+const words = [
+["出口","chūkǒu","lối ra","Biển báo"],["入口","rùkǒu","lối vào","Biển báo"],["洗手间","xǐshǒujiān","nhà vệ sinh","Biển báo"],["男","nán","nam","Biển báo"],["女","nǚ","nữ","Biển báo"],["电梯","diàntī","thang máy","Biển báo"],["楼梯","lóutī","cầu thang bộ","Biển báo"],["楼","lóu","tầng; tòa nhà","Biển báo"],["层","céng","tầng","Biển báo"],["服务台","fúwùtái","quầy dịch vụ","Biển báo"],
+["小心","xiǎoxīn","cẩn thận","Biển báo"],["禁止","jìnzhǐ","cấm","Biển báo"],["开放","kāifàng","mở cửa; mở cho tham quan","Biển báo"],["关闭","guānbì","đóng cửa","Biển báo"],["出口在哪儿？","chūkǒu zài nǎr?","Lối ra ở đâu?","Biển báo"],
+["地铁","dìtiě","tàu điện ngầm","Đi lại"],["地铁站","dìtiě zhàn","ga tàu điện ngầm","Đi lại"],["火车站","huǒchē zhàn","ga tàu hỏa","Đi lại"],["机场","jīchǎng","sân bay","Đi lại"],["车站","chēzhàn","nhà ga; bến xe","Đi lại"],["站","zhàn","ga; trạm","Đi lại"],["换乘","huànchéng","chuyển tuyến","Đi lại"],["几号线","jǐ hào xiàn","tuyến số mấy","Đi lại"],["往哪边走？","wǎng nǎbiān zǒu?","Đi về hướng nào?","Đi lại"],["下一站","xià yí zhàn","ga tiếp theo","Đi lại"],
+["左边","zuǒbian","bên trái","Đi lại"],["右边","yòubian","bên phải","Đi lại"],["一直走","yìzhí zǒu","đi thẳng","Đi lại"],["附近","fùjìn","gần đây","Đi lại"],["远","yuǎn","xa","Đi lại"],["近","jìn","gần","Đi lại"],["地图","dìtú","bản đồ","Đi lại"],["打车","dǎchē","gọi xe; đi taxi","Đi lại"],["请带我去这里","qǐng dài wǒ qù zhèlǐ","Làm ơn đưa tôi đến đây","Đi lại"],["多少钱？","duōshao qián?","Bao nhiêu tiền?","Đi lại"],
+["菜单","càidān","thực đơn","Ăn uống"],["点菜","diǎn cài","gọi món","Ăn uống"],["米饭","mǐfàn","cơm","Ăn uống"],["面条","miàntiáo","mì","Ăn uống"],["饺子","jiǎozi","sủi cảo","Ăn uống"],["包子","bāozi","bánh bao","Ăn uống"],["烧卖","shāomài","xíu mại","Ăn uống"],["肠粉","chángfěn","bánh cuốn Quảng Đông","Ăn uống"],["早茶","zǎochá","trà sáng kiểu Quảng Đông","Ăn uống"],["茶","chá","trà","Ăn uống"],
+["水","shuǐ","nước","Ăn uống"],["热水","rè shuǐ","nước nóng","Ăn uống"],["不辣","bú là","không cay","Ăn uống"],["不要香菜","bú yào xiāngcài","không lấy rau mùi","Ăn uống"],["我想要这个","wǒ xiǎng yào zhège","Tôi muốn món này","Ăn uống"],["有菜单吗？","yǒu càidān ma?","Có thực đơn không?","Ăn uống"],["买单","mǎidān","tính tiền","Ăn uống"],["打包","dǎbāo","đóng gói mang đi","Ăn uống"],["筷子","kuàizi","đũa","Ăn uống"],["勺子","sháozi","thìa","Ăn uống"],
+["多少钱一斤？","duōshao qián yì jīn?","Bao nhiêu tiền nửa cân?","Mua sắm"],["太贵了","tài guì le","Đắt quá","Mua sắm"],["便宜一点","piányi yìdiǎn","Rẻ hơn một chút","Mua sắm"],["可以试试吗？","kěyǐ shìshi ma?","Có thể thử không?","Mua sắm"],["有别的颜色吗？","yǒu bié de yánsè ma?","Có màu khác không?","Mua sắm"],["大一点","dà yìdiǎn","Lớn hơn một chút","Mua sắm"],["小一点","xiǎo yìdiǎn","Nhỏ hơn một chút","Mua sắm"],["现金","xiànjīn","tiền mặt","Mua sắm"],["微信支付","Wēixìn zhīfù","thanh toán WeChat","Mua sắm"],["支付宝","Zhīfùbǎo","Alipay","Mua sắm"],
+["酒店","jiǔdiàn","khách sạn","Khách sạn"],["预订","yùdìng","đặt trước","Khách sạn"],["房间","fángjiān","phòng","Khách sạn"],["护照","hùzhào","hộ chiếu","Khách sạn"],["房卡","fángkǎ","thẻ phòng","Khách sạn"],["早餐","zǎocān","bữa sáng","Khách sạn"],["无线网络","wúxiàn wǎngluò","mạng không dây; Wi-Fi","Khách sạn"],["有空房吗？","yǒu kōngfáng ma?","Còn phòng trống không?","Khách sạn"],["我订了房间","wǒ dìng le fángjiān","Tôi đã đặt phòng","Khách sạn"],["几点退房？","jǐ diǎn tuìfáng?","Mấy giờ trả phòng?","Khách sạn"],
+["你好","nǐ hǎo","xin chào","Giao tiếp"],["谢谢","xièxie","cảm ơn","Giao tiếp"],["不客气","bú kèqi","không có gì","Giao tiếp"],["不好意思","bù hǎoyìsi","xin lỗi; ngại quá","Giao tiếp"],["请问","qǐngwèn","xin hỏi","Giao tiếp"],["麻烦你","máfan nǐ","làm phiền bạn","Giao tiếp"],["可以","kěyǐ","có thể; được","Giao tiếp"],["不可以","bù kěyǐ","không được","Giao tiếp"],["是","shì","là; đúng","Giao tiếp"],["不是","bú shì","không phải","Giao tiếp"],
+["我听不懂","wǒ tīng bù dǒng","Tôi nghe không hiểu","Cứu nguy"],["请说慢一点","qǐng shuō màn yìdiǎn","Xin nói chậm một chút","Cứu nguy"],["请再说一遍","qǐng zài shuō yí biàn","Xin nói lại một lần","Cứu nguy"],["你会说英语吗？","nǐ huì shuō Yīngyǔ ma?","Bạn biết nói tiếng Anh không?","Cứu nguy"],["请帮帮我","qǐng bāngbang wǒ","Xin hãy giúp tôi","Cứu nguy"],["我迷路了","wǒ mílù le","Tôi bị lạc rồi","Cứu nguy"],["医院","yīyuàn","bệnh viện","Cứu nguy"],["警察","jǐngchá","cảnh sát","Cứu nguy"],["我需要帮助","wǒ xūyào bāngzhù","Tôi cần giúp đỡ","Cứu nguy"],["请给我看一下","qǐng gěi wǒ kàn yíxià","Làm ơn cho tôi xem một chút","Cứu nguy"],
+["今天","jīntiān","hôm nay","Thời gian & số"],["明天","míngtiān","ngày mai","Thời gian & số"],["现在","xiànzài","bây giờ","Thời gian & số"],["几点？","jǐ diǎn?","Mấy giờ?","Thời gian & số"],["一","yī","một","Thời gian & số"],["两","liǎng","hai (dùng trước lượng từ)","Thời gian & số"],["三","sān","ba","Thời gian & số"],["十","shí","mười","Thời gian & số"],["百","bǎi","trăm","Thời gian & số"],["块","kuài","đồng; tệ (khẩu ngữ)","Thời gian & số"]
+];
+const plans=[
+["Khởi động & nhớ lại","Kiểm tra vốn từ đang bị quên","Ôn 20 từ đầu tiên; che nghĩa tiếng Việt rồi tự nhớ.","Đọc to 10 từ và đặt 3 câu đơn giản."],
+["Đọc biển chỉ dẫn","Biển báo trong nhà ga, trung tâm thương mại","Học nhóm Biển báo; tập phân biệt 出口 và 入口.","Nhìn chữ Hán trước, không nhìn pinyin."],
+["Tàu điện & phương hướng","地铁、站、换乘、左边、右边","Học nhóm Đi lại; mô tả đường đi bằng 3 bước.","Tự nói cách đi từ ga đến điểm đến."],
+["Hỏi đường & gọi xe","Hỏi ở đâu, đi hướng nào, giá bao nhiêu","Luyện các câu hỏi đường và câu đưa địa chỉ cho tài xế.","Nói một câu hoàn chỉnh không dịch từng chữ."],
+["Ăn uống Quảng Đông","菜单、点菜、米饭、早茶、买单","Học nhóm Ăn uống; giả lập gọi 2 món và tính tiền.","Tập câu 我想要这个 và 不辣."],
+["Mua sắm & thanh toán","Giá cả, màu sắc, tiền mặt, ví điện tử","Học nhóm Mua sắm; luyện hỏi giá và đề nghị giảm giá.","Nhẩm số và giá tiền bằng tiếng Trung."],
+["Ôn tập tuần 1","Trộn từ ngày 1–6","Ôn flashcard ngẫu nhiên và làm bài kiểm tra 10 câu.","Ghi lại 10 từ sai để ôn lại ngày mai."],
+["Khách sạn","Đặt phòng, thẻ phòng, trả phòng","Học nhóm Khách sạn; đóng vai nhận phòng.","Nói được câu mình đã đặt phòng."],
+["Nghe & phản xạ","Bắt từ khóa thay vì dịch từng từ","Đọc pinyin thành tiếng, che pinyin và nhận diện chữ.","Nghe/đọc lại câu chậm rồi tăng tốc."],
+["Câu cứu nguy","Không hiểu, xin nhắc lại, cần trợ giúp","Học nhóm Cứu nguy; luyện câu 请说慢一点 và 我听不懂.","Lặp lại câu cứu nguy cho đến khi bật ra tự nhiên."],
+["Đọc trong ngữ cảnh","Biển báo và cụm từ xuất hiện ở nhiều nơi","Lọc từ vựng theo nhóm; tự đoán nghĩa trước khi xem nghĩa.","Tự giải thích vì sao chọn nghĩa đó."],
+["Nói không cần dịch","Ghép từ thành cụm và câu ngắn","Chọn 10 từ, nói thành câu theo tình huống thực tế.","Ghi âm bằng điện thoại nếu có thể."],
+["Mô phỏng một ngày ở Quảng Châu","Đi tàu, ăn sáng, mua sắm, về khách sạn","Tự tạo hành trình và dùng ít nhất 15 từ/cụm từ.","Không xem nghĩa cho đến khi thật sự bí."],
+["Tổng duyệt xuất phát","Ôn từ sai và câu thiết yếu","Làm quiz cuối; ôn các thẻ chưa nhớ; lưu câu cứu nguy.","Học nhẹ, chuẩn bị địa chỉ khách sạn bằng chữ Trung."]
+];
+let done=JSON.parse(localStorage.getItem("hy_done14")||"[]"), selectedDay=1, flashIndex=0, flashRevealed=false, quizItems=[], quizAt=0, quizScore=0;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const categories=[...new Set(words.map(w=>w[3]))];
+function optionsFor(id){$(id).innerHTML='<option value="all">Tất cả chủ đề</option>'+categories.map(c=>`<option>${esc(c)}</option>`).join('')}
+optionsFor('category');optionsFor('flashCat');
+function updateProgress(){let n=done.length,p=Math.round(n/14*100);$('statDone').textContent=n+'/14';$('percent').textContent=p+'%';$('bar').style.width=p+'%';localStorage.setItem('hy_done14',JSON.stringify(done))}
+function renderDays(){$('days').innerHTML=plans.map((p,i)=>`<button class="day ${selectedDay===i+1?'selected':''} ${done.includes(i+1)?'done':''}" data-day="${i+1}"><span class="num">${done.includes(i+1)?'✓':String(i+1).padStart(2,'0')}</span><span><b>Ngày ${i+1} · ${esc(p[0])}</b><small>${esc(p[1])}</small></span></button>`).join('');document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{selectedDay=+b.dataset.day;renderDays();renderDetail()})}
+function renderDetail(){let p=plans[selectedDay-1];$('dayDetail').innerHTML=`<span class="tag">NGÀY ${selectedDay} / 14</span><h2>${esc(p[0])}</h2><p class="sub">${esc(p[1])}</p>${[p[2],p[3],'Tự kiểm tra lại các từ chưa nhớ vào cuối buổi.'].map((t,i)=>`<label class="task"><input type="checkbox" class="taskcheck" data-task="${i}"><span>${esc(t)}</span></label>`).join('')}<div class="actions"><button class="btn" id="toggleDone">${done.includes(selectedDay)?'Bỏ đánh dấu hoàn thành':'Đánh dấu ngày đã hoàn thành'}</button><button class="btn secondary" id="toWords">Mở bộ từ vựng</button></div>`;$('toggleDone').onclick=()=>{done=done.includes(selectedDay)?done.filter(x=>x!==selectedDay):[...done,selectedDay];renderDays();renderDetail();updateProgress()};$('toWords').onclick=()=>switchTab('words')}
+function renderWords(){let q=$('search').value.toLowerCase().trim(),cat=$('category').value,hide=$('hidePinyin').checked;let filtered=words.filter(w=>(cat==='all'||w[3]===cat)&&w.join(' ').toLowerCase().includes(q));$('wordCount').textContent=`Hiển thị ${filtered.length}/${words.length} mục`; $('wordGrid').innerHTML=filtered.map(w=>`<article class="word"><span class="tag">${esc(w[3])}</span><div class="han">${esc(w[0])}</div>${hide?'':`<div class="py">${esc(w[1])}</div>`}<div class="meaning">${esc(w[2])}</div></article>`).join('')||'<p>Không tìm thấy từ phù hợp.</p>'}
+function flashList(){let c=$('flashCat').value;return words.filter(w=>c==='all'||w[3]===c)}
+function renderFlash(){let list=flashList();if(!list.length)return;flashIndex=(flashIndex+list.length)%list.length;let w=list[flashIndex];$('flashTag').textContent=w[3];$('flashHan').textContent=w[0];$('flashPy').textContent=w[1];$('flashMeaning').textContent=w[2];$('flashPy').classList.toggle('hidden',!flashRevealed||!$('flashPinyin').checked);$('flashMeaning').classList.toggle('hidden',!flashRevealed);$('flip').textContent=flashRevealed?'Ẩn đáp án':'Lật thẻ xem nghĩa';$('cardIndex').textContent=`${flashIndex+1}/${list.length}`}
+function switchTab(id){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));['roadmap','words','flash','quiz'].forEach(t=>$(t).classList.toggle('hidden',t!==id));if(id==='words')renderWords();if(id==='flash')renderFlash();if(id==='quiz'&&!quizItems.length)newQuiz()}
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>switchTab(b.dataset.tab));
+$('search').oninput=renderWords;$('category').onchange=renderWords;$('hidePinyin').onchange=renderWords;
+$('flashCat').onchange=()=>{flashIndex=0;flashRevealed=false;renderFlash()};$('flashPinyin').onchange=renderFlash;
+$('flip').onclick=()=>{flashRevealed=!flashRevealed;renderFlash()};
+$('prevCard').onclick=()=>{flashIndex--;flashRevealed=false;renderFlash()};$('nextCard').onclick=()=>{flashIndex++;flashRevealed=false;renderFlash()};
+function newQuiz(){quizItems=[...words].sort(()=>Math.random()-.5).slice(0,10);quizAt=0;quizScore=0;renderQuiz()}
+function renderQuiz(){if(quizAt>=quizItems.length){$('quizArea').innerHTML=`<div class="flash" style="min-height:200px"><div class="han">${quizScore}/10</div><h3>${quizScore>=8?'Rất tốt!':'Cố lên, ôn lại rồi thử lần nữa nhé!'}</h3><p class="sub">Đọc lại các từ chưa chắc và làm một lượt mới.</p></div>`;return}let w=quizItems[quizAt],opts=[w[2],...words.filter(x=>x[2]!==w[2]).sort(()=>Math.random()-.5).slice(0,3).map(x=>x[2])].sort(()=>Math.random()-.5);$('quizArea').innerHTML=`<div class="progressrow"><span class="tag">CÂU ${quizAt+1}/10</span><b>Điểm: ${quizScore}</b></div><div style="text-align:center;padding:20px 0"><div class="han" style="font-size:44px">${esc(w[0])}</div><div class="py">${esc(w[1])}</div><p>Chọn nghĩa tiếng Việt đúng:</p></div><div id="opts">${opts.map(o=>`<button class="quizopt" data-answer="${esc(o)}">${esc(o)}</button>`).join('')}</div><div id="feedback"></div>`;document.querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>{if($('feedback').dataset.answered)return;$('feedback').dataset.answered='1';let ok=b.dataset.answer===w[2];if(ok)quizScore++;$('feedback').className='feedback '+(ok?'good':'bad');$('feedback').textContent=ok?'Chính xác! '+w[0]+' nghĩa là “'+w[2]+'”.':'Chưa đúng. Đáp án: '+w[2]+' ('+w[1]+').';document.querySelectorAll('[data-answer]').forEach(x=>x.disabled=true);let next=document.createElement('button');next.className='btn';next.style.marginTop='12px';next.textContent=quizAt===9?'Xem kết quả':'Câu tiếp theo →';next.onclick=()=>{quizAt++;renderQuiz()};$('feedback').appendChild(document.createElement('br'));$('feedback').appendChild(next)})}
+$('newQuiz').onclick=newQuiz;
+renderDays();renderDetail();renderWords();renderFlash();updateProgress();
+</script>
+</body>
+</html>
